@@ -1,8 +1,9 @@
 <?php
 
-namespace Pdazcom\LaravelWalletOne;
+namespace Pdazcom\LaravelWalletOne\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Pdazcom\LaravelWalletOne\WalletOne;
 
 class WalletoneServiceProvider extends ServiceProvider {
 

@@ -1,7 +1,6 @@
 {
   "name": "pdazcom/laravel-walletone",
   "description": "Laravel integration walletone.com",
-  "minimum-stability": "stable",
   "homepage": "http://github.com/pdazcom/laravel-walletone",
   "license": "MIT",
   "authors": [
