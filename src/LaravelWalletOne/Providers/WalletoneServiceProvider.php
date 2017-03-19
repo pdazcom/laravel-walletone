@@ -15,7 +15,7 @@ class WalletoneServiceProvider extends ServiceProvider {
         //$this->publishes([__DIR__ . '/../../../public/' => public_path() . "/vendor/call-request/"], 'assets');
 
         // routing
-        $this->loadRoutesFrom(__DIR__ . '../Http/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/../Http/routes.php');
 
         // resolving views
         $this->loadViewsFrom(__DIR__ . '/../../views', 'walletone');
