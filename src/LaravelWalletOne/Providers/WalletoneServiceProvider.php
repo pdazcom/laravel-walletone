@@ -11,14 +11,14 @@ class WalletoneServiceProvider extends ServiceProvider {
     {
 
         // resolve config
-        $this->publishes([__DIR__ . '/../../../config/wallet-one.php' => config_path('wallet-one.php')], 'config');
+        $this->publishes([__DIR__ . '/../../config/wallet-one.php' => config_path('wallet-one.php')], 'config');
         //$this->publishes([__DIR__ . '/../../../public/' => public_path() . "/vendor/call-request/"], 'assets');
 
         // routing
         $this->loadRoutesFrom(__DIR__ . '../Http/routes.php');
 
         // resolving views
-        $this->loadViewsFrom(__DIR__ . '/../../../views', 'walletone');
+        $this->loadViewsFrom(__DIR__ . '/../../views', 'walletone');
 
     }
 
