@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Pdazcom\\LaravelWalletOne\\": "src/"
+      "Pdazcom\\LaravelWalletOne\\": "src/LaravelWalletOne/"
     }
   },
   "autoload-dev": {
