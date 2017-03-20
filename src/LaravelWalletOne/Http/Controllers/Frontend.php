@@ -8,6 +8,9 @@ class Frontend extends Controller
 {
     public function form()
     {
-        return view('walletone::form');
+        $data = [];
+
+        $data['fields'] = app('walletone')->getFields();
+        return view('walletone::form', $data);
     }
 }
