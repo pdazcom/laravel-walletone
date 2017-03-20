@@ -8,6 +8,6 @@ class Frontend extends Controller
 {
     public function form()
     {
-        return "IT'S FORM";
+        return view('walletone::form');
     }
 }
