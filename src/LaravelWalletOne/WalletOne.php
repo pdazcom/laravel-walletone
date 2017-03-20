@@ -104,6 +104,9 @@ class WalletOne
         if (isset($fields['WMI_FAIL_URL'])) {
             $fields['WMI_FAIL_URL'] = url($fields['WMI_FAIL_URL']);
         }
+        if (isset($fields['WMI_CURRENCY_ID'])) {
+            $fields['WMI_CURRENCY_ID'] = static::currencyID($fields['WMI_CURRENCY_ID']);
+        }
 
         $fields['WMI_PAYMENT_AMOUNT'] = number_format($fields['WMI_PAYMENT_AMOUNT'], 2, '.', '');
 
@@ -203,7 +206,7 @@ class WalletOne
      * @return mixed
      * @throws WalletOneException
      */
-    public static function CurrencyID($code)
+    public static function currencyID($code)
     {
         if (isset(self::$CURRENCY_ID[$code])) {
             return self::$CURRENCY_ID[$code];
