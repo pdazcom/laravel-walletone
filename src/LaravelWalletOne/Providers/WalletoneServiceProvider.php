@@ -24,7 +24,7 @@ class WalletoneServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app->singleton('walletone', function ($app) {
+        $this->app->singleton('walletone', function () {
             return new WalletOne(
                 config('wallet-one.secretKey'),
                 config('wallet-one.walletOptions'),
