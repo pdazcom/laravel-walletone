@@ -2,9 +2,6 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 Implementation of WalletOne payments for laravel 5. There are form of payment and a middleware for processing requests 
@@ -29,7 +26,7 @@ Then in config/app.php add service-provider and facade alias:
 
 'aliases' => [
     ...
-    Pdazcom\LaravelWalletOne\Providers\WalletoneServiceProvider::class,
+    'WalletOne' => Pdazcom\LaravelWalletOne\Facades\WalletOne::class,
     ...
 ];
 ```
