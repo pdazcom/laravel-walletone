@@ -20,7 +20,7 @@ class WalletonePay
     public function handle(Request $request, Closure $next)
     {
         try {
-            $signatureSuccess = WalletOne::checkSignature(config('wallet-one.seckertKey'),
+            $signatureSuccess = WalletOne::checkSignature(config('wallet-one.secretKey'),
                 $request->all(), config('wallet-one.signatureMethod')
             );
         } catch (WalletOneException $e) {

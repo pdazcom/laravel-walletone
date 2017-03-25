@@ -40,7 +40,6 @@ class WalletOne
         $this->secretKey = $secretKey;
         $this->signatureMethod = $signatureMethod;
 
-        $this->checkOptions($options);
         $this->addWalletOptions($options);
     }
 
@@ -104,6 +103,9 @@ class WalletOne
         if (isset($fields['WMI_FAIL_URL'])) {
             $fields['WMI_FAIL_URL'] = url($fields['WMI_FAIL_URL']);
         }
+        if (isset($fields['WMI_CURRENCY_ID'])) {
+            $fields['WMI_CURRENCY_ID'] = static::currencyID($fields['WMI_CURRENCY_ID']);
+        }
 
         $fields['WMI_PAYMENT_AMOUNT'] = number_format($fields['WMI_PAYMENT_AMOUNT'], 2, '.', '');
 
@@ -146,7 +148,6 @@ class WalletOne
                 $fieldValues .= urldecode($value);
             }
         }
-
         $signature = base64_encode(pack("H*", $signatureMethod($fieldValues . $secretKey)));
 
         return $signature;
@@ -189,11 +190,11 @@ class WalletOne
      */
     protected static function checkPayment(array $post)
     {
-        if (strtoupper($post["WMI_ORDER_STATE"]) === "ACCEPTED") {
+        if (isset($post["WMI_ORDER_STATE"]) and strtoupper($post["WMI_ORDER_STATE"]) === "ACCEPTED") {
             return true;
         }
 
-        throw new WalletOneException($post["WMI_ORDER_STATE"], self::ERROR_UNKNOWN);
+        throw new WalletOneException($post["WMI_ORDER_STATE"] ?? "Unknown order state", self::ERROR_UNKNOWN);
     }
 
     /**
@@ -203,7 +204,7 @@ class WalletOne
      * @return mixed
      * @throws WalletOneException
      */
-    public static function CurrencyID($code)
+    public static function currencyID($code)
     {
         if (isset(self::$CURRENCY_ID[$code])) {
             return self::$CURRENCY_ID[$code];

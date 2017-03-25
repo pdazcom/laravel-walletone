@@ -8,6 +8,13 @@ class Frontend extends Controller
 {
     public function form()
     {
-        return "IT'S FORM";
+        $data = [];
+        $walletone = app('walletone');
+        $walletone->addWalletOptions([
+            'WMI_DESCRIPTION' => 'Pay for account balance',
+            'WMI_PAYMENT_AMOUNT' => 100,
+        ]);
+        $data['fields'] = app('walletone')->getFields();
+        return view('walletone::form', $data);
     }
 }
