@@ -12,7 +12,16 @@
 >
     <testsuites>
         <testsuite name="Laravel WalletOne Test Suite">
-            <directory suffix="Test.php">./tests/</directory>
+            <directory suffix="Test.php">./Tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./LaravelWalletOne/</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <env name="APP_ENV" value="testing"/>
+    </php>
 </phpunit>

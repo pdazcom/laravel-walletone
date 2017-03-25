@@ -40,7 +40,6 @@ class WalletOne
         $this->secretKey = $secretKey;
         $this->signatureMethod = $signatureMethod;
 
-        $this->checkOptions($options);
         $this->addWalletOptions($options);
     }
 
@@ -149,7 +148,6 @@ class WalletOne
                 $fieldValues .= urldecode($value);
             }
         }
-
         $signature = base64_encode(pack("H*", $signatureMethod($fieldValues . $secretKey)));
 
         return $signature;
@@ -192,11 +190,11 @@ class WalletOne
      */
     protected static function checkPayment(array $post)
     {
-        if (strtoupper($post["WMI_ORDER_STATE"]) === "ACCEPTED") {
+        if (isset($post["WMI_ORDER_STATE"]) and strtoupper($post["WMI_ORDER_STATE"]) === "ACCEPTED") {
             return true;
         }
 
-        throw new WalletOneException($post["WMI_ORDER_STATE"], self::ERROR_UNKNOWN);
+        throw new WalletOneException($post["WMI_ORDER_STATE"] ?? "Unknown order state", self::ERROR_UNKNOWN);
     }
 
     /**
